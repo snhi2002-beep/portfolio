@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>snhi2002-beep | Full-Stack & Systems Engineer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white min-h-screen">
+  <!-- Ambient Glow -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-indigo-600/15 blur-[140px] rounded-full"></div>
+    <div class="absolute top-1/3 -right-40 w-[500px] h-[400px] bg-emerald-600/10 blur-[130px] rounded-full"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 font-mono text-sm font-bold text-white">
+        <span class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-600/30">&lt;/&gt;</span>
+        <span>snhi2002-beep</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-mono text-slate-300">
+        <a href="#projects" class="hover:text-indigo-400 transition">01. Projects</a>
+        <a href="#architecture" class="hover:text-indigo-400 transition">02. Architecture</a>
+        <a href="#skills" class="hover:text-indigo-400 transition">03. Skill Matrix</a>
+        <a href="#contact" class="hover:text-indigo-400 transition">04. Contact</a>
+      </nav>
+      <a href="https://github.com/snhi2002-beep" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-slate-200 transition">
+        <span>GitHub Profile ↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-24">
+    <!-- Hero -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/70 border border-indigo-800/60 text-indigo-300 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Available for Full-Stack & Systems Engineering Opportunities</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+          Engineering <span class="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">Full-Stack Systems</span> &amp; Secure Architectures.
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Full-stack developer and systems thinker specializing in modern TypeScript monorepos (Next.js, Turborepo, Node.js), low-level memory-safe C++ algorithms, relational &amp; NoSQL database optimization, and hardened authentication &amp; media streaming architectures.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="#projects" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-lg shadow-indigo-600/30 transition">Explore Featured Work</a>
+          <a href="#architecture" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-sm font-mono transition">System Blueprints</a>
+        </div>
+      </div>
+
+      <!-- Interactive Terminal Widget -->
+      <div class="lg:col-span-5 rounded-2xl border border-slate-800 bg-slate-950/90 shadow-2xl overflow-hidden">
+        <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-2 text-xs font-mono text-slate-400">snhi2002-beep@portfolio:~</span>
+          </div>
+          <button onclick="runCmd('clear')" class="text-xs font-mono text-slate-400 hover:text-white">clear</button>
+        </div>
+        <div class="px-4 py-2 bg-slate-900/50 border-b border-slate-800 flex flex-wrap gap-1.5">
+          <button onclick="runCmd('whoami')" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-indigo-300 hover:bg-indigo-600 hover:text-white transition">whoami</button>
+          <button onclick="runCmd('projects')" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-indigo-300 hover:bg-indigo-600 hover:text-white transition">projects</button>
+          <button onclick="runCmd('skills')" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-indigo-300 hover:bg-indigo-600 hover:text-white transition">skills</button>
+          <button onclick="runCmd('architecture')" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-indigo-300 hover:bg-indigo-600 hover:text-white transition">architecture</button>
+        </div>
+        <div id="term-output" class="p-4 font-mono text-xs sm:text-sm h-60 overflow-y-auto space-y-2 text-slate-300">
+          <div class="text-emerald-400">✔ Loaded snhi2002-beep runtime environment. Click a command above or type below.</div>
+        </div>
+        <form onsubmit="handleTermSubmit(event)" class="flex items-center border-t border-slate-800 bg-slate-900/60 px-4 py-2.5">
+          <span class="text-emerald-400 font-mono text-sm mr-2">➜</span>
+          <input id="term-input" type="text" placeholder="Type help, whoami, projects, skills..." class="w-full bg-transparent text-xs sm:text-sm font-mono text-white focus:outline-none" />
+          <button type="submit" class="ml-2 px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono">Run</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="space-y-8 scroll-mt-20">
+      <div class="border-b border-slate-800 pb-5 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-indigo-400">01 // FEATURED REPOSITORIES</span>
+          <h2 class="text-3xl font-bold text-white mt-1">Engineered Systems &amp; Web Platforms</h2>
+        </div>
+        <div class="flex flex-wrap gap-2" id="filter-buttons">
+          <button onclick="filterProjects('All')" class="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-indigo-600 text-white">All</button>
+          <button onclick="filterProjects('Full-Stack')" class="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-300 border border-slate-800">Full-Stack</button>
+          <button onclick="filterProjects('Systems & Security')" class="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-300 border border-slate-800">Systems &amp; Security</button>
+          <button onclick="filterProjects('Real-Time & AI')" class="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-300 border border-slate-800">Real-Time &amp; AI</button>
+        </div>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="space-y-6 scroll-mt-20">
+      <div class="border-b border-slate-800 pb-5">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">02 // SYSTEM ARCHITECTURE</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Security, Caching &amp; Streaming Blueprints</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <span class="text-xs font-mono text-emerald-400">BLUEPRINT 01</span>
+          <h3 class="text-lg font-bold text-white">Zero-Trust OAuth 2.0 + HttpOnly JWT</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">Mitigates XSS token exfiltration by binding short-lived access tokens to SameSite HttpOnly cookies with Redis session revocation lists.</p>
+          <div class="pt-2 text-[11px] font-mono text-indigo-300">Express.js • Passport.js • Redis • Google OAuth</div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <span class="text-xs font-mono text-indigo-400">BLUEPRINT 02</span>
+          <h3 class="text-lg font-bold text-white">3NF Relational + Redis Write-Through</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">Combines normalized 3NF MySQL schemas and indexed MongoDB pipelines with Redis read-aside caching for sub-2ms hot query responses.</p>
+          <div class="pt-2 text-[11px] font-mono text-indigo-300">MySQL 3NF • MongoDB • Redis Cache</div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <span class="text-xs font-mono text-amber-400">BLUEPRINT 03</span>
+          <h3 class="text-lg font-bold text-white">Protected Streaming &amp; Socket.io Rooms</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">Coordinates multiplexed WebSocket rooms and token-signed media manifests inside a Turborepo TypeScript monorepo architecture.</p>
+          <div class="pt-2 text-[11px] font-mono text-indigo-300">Turborepo • Socket.io • Signed Manifests</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section id="skills" class="space-y-6 scroll-mt-20">
+      <div class="border-b border-slate-800 pb-5">
+        <span class="text-xs font-mono uppercase tracking-widest text-indigo-400">03 // COMPETENCY MATRIX</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Full-Stack, Systems &amp; Database Engineering</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <p class="font-mono text-indigo-400 font-semibold">WEB &amp; MONOREPOS</p>
+          <p class="text-white font-bold text-sm">Next.js, React, Turborepo</p>
+          <p class="text-slate-400">SSR, App Router, Node.js, Express.js, ASP.NET Core, Tailwind CSS</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <p class="font-mono text-emerald-400 font-semibold">SYSTEMS &amp; OOP</p>
+          <p class="text-white font-bold text-sm">C++, Java, TypeScript</p>
+          <p class="text-slate-400">Pointers, Dynamic Memory, STL Containers, Sorting, Java OOP Principles</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <p class="font-mono text-amber-400 font-semibold">DATA &amp; SECURITY</p>
+          <p class="text-white font-bold text-sm">MySQL, MongoDB, Redis</p>
+          <p class="text-slate-400">1NF–3NF Normalization, OAuth 2.0, HttpOnly JWT, WAF &amp; DRM Concepts</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <p class="font-mono text-sky-400 font-semibold">MODELING &amp; DESIGN</p>
+          <p class="text-white font-bold text-sm">UML, ER &amp; Agile</p>
+          <p class="text-slate-400">Sequence/Class Diagrams, Scrum/Kanban, Linear Algebra &amp; Mechanical Gears</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2">
+        <span class="text-xs font-mono text-emerald-400 uppercase">04 // CONNECT</span>
+        <h2 class="text-2xl font-bold text-white">Ready to Collaborate on High-Impact Engineering?</h2>
+        <p class="text-sm text-slate-300">Explore all repositories, commits, and live deployments directly on GitHub.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 shrink-0">
+        <a href="https://github.com/snhi2002-beep" target="_blank" rel="noreferrer" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition">Visit GitHub (@snhi2002-beep) ↗</a>
+        <a href="https://blogging-ui-three.vercel.app" target="_blank" rel="noreferrer" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-mono transition">Live Blogging UI ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const PROJECTS = [
+      {
+        title: "Streaming Platform Monorepo",
+        category: "Full-Stack",
+        desc: "Modular streaming architecture built with Turborepo and TypeScript featuring shared UI packages and signed media manifest protection.",
+        tech: ["TypeScript", "Turborepo", "Next.js", "Redis"],
+        github: "https://github.com/snhi2002-beep/streaming-platform"
+      },
+      {
+        title: "Blogging UI & Publishing Engine",
+        category: "Full-Stack",
+        desc: "Full-stack Next.js, Tailwind CSS, and MongoDB publishing platform with SSR SEO optimization and dynamic author routing.",
+        tech: ["TypeScript", "Next.js", "MongoDB", "Tailwind CSS"],
+        github: "https://github.com/snhi2002-beep/blogging-ui",
+        live: "https://blogging-ui-three.vercel.app"
+      },
+      {
+        title: "Gemini AI Browser Assistant",
+        category: "Real-Time & AI",
+        desc: "Context-aware Chrome extension integrated with the Gemini API using isolated service workers for real-time streaming responses.",
+        tech: ["JavaScript", "Chrome Extension API", "Gemini API"],
+        github: "https://github.com/snhi2002-beep/gemini-extention"
+      },
+      {
+        title: "Interactive Parcel & Web Hub",
+        category: "Full-Stack",
+        desc: "Single-page multi-role booking and tracking web application deployed on Vercel with deterministic client state persistence.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Vercel"],
+        github: "https://github.com/snhi2002-beep/app",
+        live: "https://app-seven-delta-54.vercel.app"
+      },
+      {
+        title: "Real-Time Socket & Auth Engine",
+        category: "Systems & Security",
+        desc: "Express.js and Socket.io backend featuring Google OAuth 2.0, HttpOnly JWT cookie rotation, and room-isolated WebSockets.",
+        tech: ["Node.js", "Express.js", "Socket.io", "OAuth 2.0"],
+        github: "https://github.com/snhi2002-beep/hd-new"
+      },
+      {
+        title: "Next Platform Starter",
+        category: "Full-Stack",
+        desc: "Production-grade Next.js starter architecture with edge middleware and modular API route conventions.",
+        tech: ["Next.js", "React", "Tailwind CSS"],
+        github: "https://github.com/snhi2002-beep/next-platform-starter"
+      }
+    ];
+
+    function renderProjects(category = "All") {
+      const grid = document.getElementById("projects-grid");
+      const list = category === "All" ? PROJECTS : PROJECTS.filter(p => p.category === category);
+      grid.innerHTML = list.map(p => `
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 flex flex-col justify-between space-y-4 hover:border-indigo-500/50 transition">
+          <div class="space-y-2">
+            <span class="text-[11px] font-mono uppercase text-indigo-400">${p.category}</span>
+            <h3 class="text-xl font-bold text-white">${p.title}</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">${p.desc}</p>
+          </div>
+          <div class="space-y-3 pt-2">
+            <div class="flex flex-wrap gap-1.5">
+              ${p.tech.map(t => `<span class="text-xs font-mono px-2.5 py-0.5 rounded bg-slate-800 text-slate-300">${t}</span>`).join("")}
+            </div>
+            <div class="flex items-center gap-4 pt-2 border-t border-slate-800/80 text-xs font-mono">
+              <a href="${p.github}" target="_blank" class="text-indigo-400 hover:underline">GitHub Repo ↗</a>
+              ${p.live ? `<a href="${p.live}" target="_blank" class="text-emerald-400 hover:underline">Live Demo ↗</a>` : ""}
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterProjects(cat) {
+      renderProjects(cat);
+    }
+
+    function runCmd(cmd) {
+      const out = document.getElementById("term-output");
+      if (cmd === "clear") {
+        out.innerHTML = "";
+        return;
+      }
+      const responses = {
+        help: "Available commands: whoami, projects, skills, architecture, clear",
+        whoami: "snhi2002-beep — Full-Stack & Systems Engineer (Next.js, Turborepo, C++, Java, OAuth 2.0, MySQL/MongoDB/Redis).",
+        projects: "Repositories: streaming-platform, blogging-ui (Vercel), gemini-extention, next-platform-starter, app (Vercel), hd-new.",
+        skills: "Languages & Stack: TypeScript, C++, Java, SQL, Next.js, Express.js, Socket.io, ASP.NET Core, Redis, Tailwind CSS.",
+        architecture: "Blueprints: [1] OAuth2 + HttpOnly JWT, [2] 3NF MySQL + Redis Write-Through Cache, [3] Protected Streaming + Socket.io."
+      };
+      const reply = responses[cmd.toLowerCase()] || `Command not found: ${cmd}. Try 'help'.`;
+      out.innerHTML += `<div class="pt-1"><span class="text-emerald-400">➜</span> <span class="text-white">${cmd}</span><div class="text-slate-300 pl-4 mt-0.5">${reply}</div></div>`;
+      out.scrollTop = out.scrollHeight;
+    }
+
+    function handleTermSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("term-input");
+      if (input.value.trim()) {
+        runCmd(input.value.trim());
+        input.value = "";
+      }
+    }
+
+    renderProjects();
+  </script>
+</body>
+</html>
